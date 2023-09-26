@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="CustomColoredField" constructor="SpiritField" version="0.0.1" display-name-key="Custom Colored Field" description-key="Spirit Colored Field" control-type="virtual" >
+    <!--external-service-usage node declares whether this 3rd party PCF control is using external service or not, if yes, this control will be considered as premium and please also add the external domain it is using.
+    If it is not using any external service, please set the enabled="false" and DO NOT add any domain below. The "enabled" will be false by default.
+    Example1:
+      <external-service-usage enabled="true">
+        <domain>www.Microsoft.com</domain>
+      </external-service-usage>
+    Example2:
+      <external-service-usage enabled="false">
+      </external-service-usage>
+    -->
+    <external-service-usage enabled="false">
+      <!--UNCOMMENT TO ADD EXTERNAL DOMAINS
+      <domain></domain>
+      <domain></domain>
+      -->
+    </external-service-usage>
+    <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
+    <!-- <property name="controlValue" display-name-key="controlValue_Display_Key" description-key="controlValue_Desc_Key" of-type="Currency" usage="bound" required="true" /> -->
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <type-group name="data-types">
+        <type>SingleLine.Text</type>
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="controlValue" display-name-key="Target Field" description-key="Target Field" of-type-group="data-types" usage="bound" required="false"/>
+      <property name="defaultValue" display-name-key="Default Field Value" description-key="Default Field Value to be used in case the field value is null or blank string" of-type="SingleLine.Text" usage="input" required="false" default-value="---"/>
+      <property name="Logic" display-name-key="Logic" description-key="Configure which logic should apply" of-type="Enum" usage="input" required="true" default-value="0">
+        <!-- Apply styling if field's value is in between the condition value(eg. 100-200 means true only for values 100 to 200) -->
+        <value name="Range" display-name-key="Range" description-key="Range">0</value>
+        <!-- Apply styling if field's value = condition value (can be a string or number) -->
+        <value name="Equal" display-name-key="Equal" description-key="Equal">1</value>
+        <!-- Apply styling base on multiple color field index if field's value is existing multiple value field -->
+        <value name="Contain" display-name-key="Contain" description-key="Contain">2</value>
+      </property>
+      <property name="conditionValue" display-name-key="Condition Value" description-key="Value to be checked base on your logic" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="trueColor" display-name-key="Font Color when True" description-key="Font Color to apply when condition is true" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="defaultColor" display-name-key="Default Font Colors" description-key="Default Font Colors" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="defaultBackgroundColor" display-name-key="Default Background Colors" description-key="Default Background Colors" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="trueBackgroundColor" display-name-key="Background Color when True" description-key="Background Color to apply when condition is true" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="trueIconAppendName" display-name-key="Appended Icon Class Name when True" description-key="Appended Icon Class Name when True" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="defaultIconAppendName" display-name-key="Default Appended Icon Class Name" description-key="Default Appended Icon Class Name" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="trueIconAppendColor" display-name-key="Appended Icon Color when True" description-key="Appended Icon Color when True" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="defaultIconAppendColor" display-name-key="Default Appended Icon Color" description-key="Default Appended Icon Color" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="trueIconAppendAnimation" display-name-key="Appended Icon Animation when True" description-key="Appended Icon Animation when True" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="defaultIconAppendAnimation" display-name-key="Default Appended Icon Animation" description-key="Default Appended Icon Animation" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="trueIconPrependName" display-name-key="Prepended Icon Class Name when True" description-key="Prepended Icon Class Name when True" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="defaultIconPrependName" display-name-key="Default Prepended Icon Class Name" description-key="Default Prepended Icon Class Name" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="trueIconPrependColor" display-name-key="Prepended Icon Color when True" description-key="Prepended Icon Color when True" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="defaultIconPrependColor" display-name-key="Default Prepended Icon Color" description-key="Default Prepended Icon Color" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="trueIconPrependAnimation" display-name-key="Prepended Icon Animation when True" description-key="Prepended Icon Animation when True" of-type="SingleLine.Text" usage="input" required="false" />
+      <property name="defaultIconPrependAnimation" display-name-key="Default Prepended Icon Animation" description-key="Default Prepended Icon Animation" of-type="SingleLine.Text" usage="input" required="false" />
+      
+      <!-- <property name="colorSet" display-name-key="colorSet_Display_Key" default-value="0" description-key="colorSet_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property name="colorSet" display-name-key="colorSet_Display_Key" default-value="0" description-key="colorSet_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property name="colorSet" display-name-key="colorSet_Display_Key" default-value="0" description-key="colorSet_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property name="colorSet" display-name-key="colorSet_Display_Key" default-value="0" description-key="colorSet_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" />
+      <property name="colorSet" display-name-key="colorSet_Display_Key" default-value="0" description-key="colorSet_Desc_Key" of-type="SingleLine.Text" usage="bound" required="true" /> -->
+      <!-- <property name="colorSet" display-name-key="colorSet_Display_Key" default-value="0" description-key="colorSet_Desc_Key" of-type="OptionSet" usage="input" required="true" >
+        <value name="Red" display-name-key="Off" description-key="Display all records.">0</value>
+        <value name="Green" display-name-key="On" description-key="Display active records only.">1</value>
+      </property> -->
+    
+    <!--
+      Property node's of-type attribute can be of-type-group attribute.
+      Example:
+      <type-group name="numbers">
+        <type>Whole.None</type>
+        <type>Currency</type>
+        <type>FP</type>
+        <type>Decimal</type>
+      </type-group>
+      <property name="sampleProperty" display-name-key="Property_Display_Key" description-key="Property_Desc_Key" of-type-group="numbers" usage="bound" required="true" />
+    -->
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.8.6" />
+      <platform-library name="Fluent" version="8.29.0" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/SpiritColored.css" order="1" />
+      <resx path="strings/SpiritColored.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <!-- UNCOMMENT TO ENABLE THE SPECIFIED API
+    <feature-usage>
+      <uses-feature name="Device.captureAudio" required="true" />
+      <uses-feature name="Device.captureImage" required="true" />
+      <uses-feature name="Device.captureVideo" required="true" />
+      <uses-feature name="Device.getBarcodeValue" required="true" />
+      <uses-feature name="Device.getCurrentPosition" required="true" />
+      <uses-feature name="Device.pickFile" required="true" />
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="true" />
+    </feature-usage>
+    -->
+  </control>
+</manifest>
